@@ -1,7 +1,6 @@
 package parser;
 
 import java.nio.file.Path;
-import java.util.Collections;
 import java.util.List;
 
 public interface ParserInterface {
@@ -16,9 +15,4 @@ public interface ParserInterface {
 	/** 入力がテキストファイル */
 	public List<String> parse(Path nlTextFilePath);
 
-	/** 入力されたList<NL>が空だった場合の処理 */
-	public default List<String> emptyInput() {
-		System.err.println("Input List is Empty!!!");
-		return Collections.emptyList();
-	}
 }

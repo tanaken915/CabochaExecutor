@@ -1,8 +1,8 @@
 package util;
 
-public class PlatformUtil {
+public interface PlatformUtil {
 
-	private static final String OS_NAME = System.getProperty("os.name").toLowerCase();
+	static final String OS_NAME = System.getProperty("os.name").toLowerCase();
 
     public static boolean isLinux() {
         return OS_NAME.startsWith("linux");
