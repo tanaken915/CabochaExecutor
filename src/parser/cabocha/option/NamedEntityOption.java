@@ -6,7 +6,7 @@ public enum NamedEntityOption implements EnumerativeOption {
 	USE_UNCONSTRAINT("2");	// 文節の整合性を保たずに固有表現解析を行う
 
 	private static final String prefix = "--ne=";
-	private static final String shortenPrefix = "-n";
+	//private static final String shortenPrefix = "-n";
 
 	private final String num_str;
 

@@ -6,7 +6,7 @@ import java.nio.file.Files;
 public class OutputFileOption extends FileOption {
 
 	private static final String prefix = "--output=";
-	private static final String shortenPrefix = "-o";
+	//private static final String shortenPrefix = "-o";
 
 
 	public OutputFileOption(String first, String... more) {

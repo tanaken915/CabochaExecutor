@@ -7,7 +7,7 @@ public enum OutputFormatOption implements EnumerativeOption {
 	XML("3");				// XML形式で出力
 
 	private static final String prefix = "--output-format=";
-	private static final String shortenPrefix = "-f";
+	//private static final String shortenPrefix = "-f";
 
 	private final String num_str;
 

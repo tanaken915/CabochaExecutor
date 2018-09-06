@@ -9,7 +9,7 @@ public interface EnumerativeOption extends CommandOption {
      * 第一引数に指定されたEnumの中から、第2引数のコード値と一致するものを取得する。
      *
      * @param target	取得したいEnumのクラス
-     * @param optnum	検索するコード値
+     * @param num_str	検索する数値の文字列表現
      * @param <E>   	CodeInterfaceを実装したEnumクラス
      * @return E
      */
