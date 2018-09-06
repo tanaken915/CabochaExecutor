@@ -66,8 +66,8 @@ public class Cabocha extends AbstractProcessManager implements ParserInterface {
 
 		OUTPUT_FORMAT_OPTION = Optional.ofNullable(EnumerativeOption.valueOf(OutputFormatOption.class, propval4oform));
 		NAMED_ENTITY_OPTION = Optional.ofNullable(EnumerativeOption.valueOf(NamedEntityOption.class, propval4ne));
-		INPUT_FILE_OPTION = Optional.ofNullable(Objects.nonNull(propval4ifile)? new InputFileOption(propval4ifile) : null);
-		OUTPUT_FILE_OPTION = Optional.ofNullable(Objects.nonNull(propval4ofile)? new OutputFileOption(propval4ofile): null);
+		INPUT_FILE_OPTION = Objects.nonNull(propval4ifile)? Optional.of(new InputFileOption(propval4ifile)) : Optional.empty();
+		OUTPUT_FILE_OPTION = Objects.nonNull(propval4ofile)? Optional.of(new OutputFileOption(propval4ofile)) : Optional.empty();
 	}
 
 	/* インスタンスごとのオプション */
@@ -149,9 +149,8 @@ public class Cabocha extends AbstractProcessManager implements ParserInterface {
 		// 入力ファイル指定のオプションを用意
 		input_file_option = Optional.of(new InputFileOption(textPath.toString()));
 		// 一時ファイルに出力するオプションを用意
-		if (!output_file_option.isPresent())
-			output_file_option = Optional.of(OUTPUT_TMPFILE);
-
+		if (!output_file_option.isPresent())	// オプション指定がなければ
+			output_file_option = Optional.of(OUTPUT_TMPFILE);	// 設定ファイルで指定した一時ファイルを使う
 		startNewProcess(command());					// プロセス開始
 		finishPresentProcess(1);					// プロセス終了
 		try {
@@ -181,6 +180,7 @@ public class Cabocha extends AbstractProcessManager implements ParserInterface {
 	/** 入力したいテキストを一時ファイルに出力 */
 	private static Path makeTemporaryFile4Input(List<String> texts) {
 		try {
+			Files.createDirectories(INPUT_TMPFILE.getPath().getParent());
 			return Files.write(INPUT_TMPFILE.getPath(), texts, StandardCharsets.UTF_8, StandardOpenOption.WRITE,
 					StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 		} catch (IOException e) {

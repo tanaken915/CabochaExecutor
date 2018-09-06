@@ -14,4 +14,9 @@ public abstract class FileOption implements CommandOption {
 		return file;
 	}
 	
+	@Override
+	public String toString() {
+		return file.toString();
+	}
+	
 }

@@ -1,5 +1,8 @@
 package parser.cabocha.option;
 
+import java.io.IOException;
+import java.nio.file.Files;
+
 public class OutputFileOption extends FileOption {
 
 	private static final String prefix = "--output=";
@@ -8,6 +11,11 @@ public class OutputFileOption extends FileOption {
 
 	public OutputFileOption(String first, String... more) {
 		super(first, more);
+		try {
+			Files.createDirectories(getPath().getParent());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 
