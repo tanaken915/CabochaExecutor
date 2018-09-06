@@ -1,4 +1,4 @@
-package parser.cabocha.option;
+package cabocha.option.enumerate;
 
 public enum OutputFormatOption implements EnumerativeOption {
 	TREE("0"),				// 木構造で出力

@@ -1,4 +1,4 @@
-package parser.cabocha.option;
+package cabocha.option.file;
 
 public class InputFileOption extends FileOption {
 

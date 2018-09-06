@@ -1,4 +1,4 @@
-package parser.cabocha;
+package cabocha;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -16,13 +16,13 @@ import java.util.Properties;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import cabocha.option.CommandOption;
+import cabocha.option.enumerate.EnumerativeOption;
+import cabocha.option.enumerate.NamedEntityOption;
+import cabocha.option.enumerate.OutputFormatOption;
+import cabocha.option.file.InputFileOption;
+import cabocha.option.file.OutputFileOption;
 import parser.ParserInterface;
-import parser.cabocha.option.CommandOption;
-import parser.cabocha.option.EnumerativeOption;
-import parser.cabocha.option.InputFileOption;
-import parser.cabocha.option.NamedEntityOption;
-import parser.cabocha.option.OutputFileOption;
-import parser.cabocha.option.OutputFormatOption;
 import process.AbstractProcessManager;
 import util.PlatformUtil;
 

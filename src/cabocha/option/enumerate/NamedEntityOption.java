@@ -1,4 +1,4 @@
-package parser.cabocha.option;
+package cabocha.option.enumerate;
 
 public enum NamedEntityOption implements EnumerativeOption {
 	NONUSE("0"),			// 固有表現解析を行わない

@@ -1,4 +1,4 @@
-package parser.cabocha.option;
+package cabocha.option.file;
 
 import java.io.IOException;
 import java.nio.file.Files;

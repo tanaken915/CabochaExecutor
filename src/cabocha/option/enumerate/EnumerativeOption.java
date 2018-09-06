@@ -1,5 +1,7 @@
-package parser.cabocha.option;
+package cabocha.option.enumerate;
 import java.util.Arrays;
+
+import cabocha.option.CommandOption;
 
 public interface EnumerativeOption extends CommandOption {
 

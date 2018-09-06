@@ -1,4 +1,4 @@
-package parser.cabocha.option;
+package cabocha.option;
 
 public interface CommandOption {
 	String toOption();

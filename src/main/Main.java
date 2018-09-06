@@ -3,7 +3,7 @@ package main;
 import java.util.Arrays;
 import java.util.List;
 
-import parser.cabocha.Cabocha;
+import cabocha.Cabocha;
 
 public class Main {
 
