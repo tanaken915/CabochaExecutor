@@ -1,6 +1,5 @@
 package cabocha;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -44,7 +43,7 @@ public class Cabocha extends AbstractProcessManager implements ParserInterface {
 
 	static {
 		Properties prop = new Properties();
-		try (InputStream is = new FileInputStream("bin/property.xml")) {
+		try (InputStream is = Cabocha.class.getClassLoader().getResourceAsStream("conf/property.xml")) {
 			prop.loadFromXML(is);
 		} catch (IOException e) {
 			e.printStackTrace();
