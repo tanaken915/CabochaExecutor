@@ -1,16 +1,16 @@
 package main;
 
-import java.util.Arrays;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import cabocha.Cabocha;
 
 public class Main {
-
-
 	public static void main(String[] args) {
 		Cabocha cabocha = new Cabocha();
 
+		/*
 		List<String> texts = Arrays.asList(
 				"クジラは哺乳類である。", 
 				"クジラは海に住む。" ,
@@ -18,9 +18,12 @@ public class Main {
 				"クジラは大きくて可愛い。",
 				"クジラは尾びれが横向き。"
 				);
+		//*/
 		
-		List<String> result = cabocha.parse(texts);
+		Path p = Paths.get("../OntologyGenerator/resource/input/goo/text/gooText生物-動物名-All.txt");
+		List<String> result = cabocha.parse(p);
 
-		result.forEach(System.out::println);
+		System.out.println(result.size());
+		//result.forEach(System.out::println);
 	}
 }

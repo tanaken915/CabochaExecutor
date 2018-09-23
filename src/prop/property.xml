@@ -6,6 +6,9 @@
 	<entry key="command-windows">cmd /c cabocha</entry>
 	<entry key="command-macos">/usr/local/bin/cabocha</entry>
 	
+	<!-- 必須: CaboCha実行プロセスの最大待ち時間 -->
+	<entry key="wait">100</entry>
+	
 	<!-- 必須: CaboCha実行時に使う入出力用一時ファイルのパス -->
 	<!-- "output-file"オプションとは関係なく使われる可能性がある。同じパスでもいい -->
 	<entry key="input-tmpfile">tmp/cabochaexec/CaboChaInput.tmp</entry>

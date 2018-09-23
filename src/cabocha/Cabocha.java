@@ -29,6 +29,8 @@ public class Cabocha extends AbstractProcessManager implements ParserInterface {
 	/* CaboChaの基本実行コマンド (必須) */
 	// 不変なのでstatic
 	private static final List<String> COMMAND;
+	/** プロセスの待ち時間 */
+	private static final int WAIT;
 	/* 実行時に使うかもしれない一時ファイルのパス (必須) */
 	/** CaboChaの入力ファイルの保存先. */
 	private static final InputFileOption INPUT_TMPFILE;
@@ -40,7 +42,7 @@ public class Cabocha extends AbstractProcessManager implements ParserInterface {
 	private static final Optional<NamedEntityOption> NAMED_ENTITY_OPTION;
 	private static final Optional<InputFileOption> INPUT_FILE_OPTION;
 	private static final Optional<OutputFileOption> OUTPUT_FILE_OPTION;
-
+	
 	static {
 		Properties prop = new Properties();
 		try (InputStream is = Cabocha.class.getClassLoader().getResourceAsStream("prop/property.xml")) {
@@ -51,6 +53,7 @@ public class Cabocha extends AbstractProcessManager implements ParserInterface {
 		String propkey4os = PlatformUtil.isMac() ? "command-macos"
 				: PlatformUtil.isWindows() ? "command-windows"
 				: "";
+		String propval4wait = prop.getProperty("wait");
 		String propval4itmp = prop.getProperty("input-tmpfile");
 		String propval4otmp = prop.getProperty("output-tmpfile");
 		String propval4oform = prop.getProperty("output-format");
@@ -60,6 +63,8 @@ public class Cabocha extends AbstractProcessManager implements ParserInterface {
 		
 		COMMAND = Arrays.asList(prop.getProperty(propkey4os).split(" "));
 
+		WAIT = Integer.valueOf(propval4wait);
+		
 		INPUT_TMPFILE = new InputFileOption(propval4itmp);
 		OUTPUT_TMPFILE = new OutputFileOption(propval4otmp);
 
@@ -148,10 +153,10 @@ public class Cabocha extends AbstractProcessManager implements ParserInterface {
 		// 入力ファイル指定のオプションを用意
 		input_file_option = Optional.of(new InputFileOption(textPath.toString()));
 		// 一時ファイルに出力するオプションを用意
-		if (!output_file_option.isPresent())	// オプション指定がなければ
+		if (!output_file_option.isPresent())					// オプション指定がなければ
 			output_file_option = Optional.of(OUTPUT_TMPFILE);	// 設定ファイルで指定した一時ファイルを使う
-		startNewProcess(command());					// プロセス開始
-		finishPresentProcess(1);					// プロセス終了
+		startNewProcess(command());		// プロセス開始
+		finishPresentProcess(WAIT);		// プロセス終了
 		try {
 			return Files.readAllLines(output_file_option.get().getPath(), StandardCharsets.UTF_8);
 		} catch (IOException e) {
@@ -163,7 +168,6 @@ public class Cabocha extends AbstractProcessManager implements ParserInterface {
 
 	/**
 	 * プロセスへの入力を繰り返し、出力をまとめて得る. 多分，数が多いと使えない.
-	 *
 	 * @param texts
 	 * @return 解析結果の文字列リスト
 	 */
