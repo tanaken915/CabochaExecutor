@@ -50,28 +50,28 @@ public class Cabocha extends AbstractProcessManager implements ParserInterface {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		String propkey4os = PlatformUtil.isMac() ? "command-macos"
+		String key4os = PlatformUtil.isMac() ? "command-macos"
 				: PlatformUtil.isWindows() ? "command-windows"
 				: "";
-		String propval4wait = prop.getProperty("wait");
-		String propval4itmp = prop.getProperty("input-tmpfile");
-		String propval4otmp = prop.getProperty("output-tmpfile");
-		String propval4oform = prop.getProperty("output-format");
-		String propval4ne = prop.getProperty("named-entity");
-		String propval4ifile = prop.getProperty("input-file");
-		String propval4ofile = prop.getProperty("output-file");
+		String val4wait = prop.getProperty("wait");
+		String val4i_tmp = prop.getProperty("input-tmpfile");
+		String val4o_tmp = prop.getProperty("output-tmpfile");
+		String val4o_form = prop.getProperty("output-format");
+		String val4ne = prop.getProperty("named-entity");
+		String val4i_file = prop.getProperty("input-file");
+		String val4o_file = prop.getProperty("output-file");
 		
-		COMMAND = Arrays.asList(prop.getProperty(propkey4os).split(" "));
+		COMMAND = Arrays.asList(prop.getProperty(key4os).split(" "));
 
-		WAIT = Integer.valueOf(propval4wait);
+		WAIT = Integer.valueOf(val4wait);
 		
-		INPUT_TMPFILE = new InputFileOption(propval4itmp);
-		OUTPUT_TMPFILE = new OutputFileOption(propval4otmp);
+		INPUT_TMPFILE = new InputFileOption(val4i_tmp);
+		OUTPUT_TMPFILE = new OutputFileOption(val4o_tmp);
 
-		OUTPUT_FORMAT_OPTION = Optional.ofNullable(EnumerativeOption.valueOf(OutputFormatOption.class, propval4oform));
-		NAMED_ENTITY_OPTION = Optional.ofNullable(EnumerativeOption.valueOf(NamedEntityOption.class, propval4ne));
-		INPUT_FILE_OPTION = Objects.nonNull(propval4ifile)? Optional.of(new InputFileOption(propval4ifile)) : Optional.empty();
-		OUTPUT_FILE_OPTION = Objects.nonNull(propval4ofile)? Optional.of(new OutputFileOption(propval4ofile)) : Optional.empty();
+		OUTPUT_FORMAT_OPTION = Optional.ofNullable(EnumerativeOption.valueOf(OutputFormatOption.class, val4o_form));
+		NAMED_ENTITY_OPTION = Optional.ofNullable(EnumerativeOption.valueOf(NamedEntityOption.class, val4ne));
+		INPUT_FILE_OPTION = Objects.nonNull(val4i_file)? Optional.of(new InputFileOption(val4i_file)) : Optional.empty();
+		OUTPUT_FILE_OPTION = Objects.nonNull(val4o_file)? Optional.of(new OutputFileOption(val4o_file)) : Optional.empty();
 	}
 
 	/* インスタンスごとのオプション */
