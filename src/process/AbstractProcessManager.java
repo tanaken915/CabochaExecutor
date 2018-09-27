@@ -14,7 +14,6 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 public abstract class AbstractProcessManager {
@@ -35,9 +34,9 @@ public abstract class AbstractProcessManager {
 	}
 
 	/** 外部プロセス終了 */
-	protected void finishPresentProcess(long sec) {
+	protected void finishPresentProcess(WaitTime wait) {
 		try {
-			process.waitFor(sec, TimeUnit.SECONDS);
+			process.waitFor(wait.getTime(), wait.getUnit());
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

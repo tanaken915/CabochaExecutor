@@ -6,7 +6,7 @@
 	<entry key="command-windows">cmd /c cabocha</entry>
 	<entry key="command-macos">/usr/local/bin/cabocha</entry>
 	
-	<!-- 必須: CaboCha実行プロセスの最大待ち時間 -->
+	<!-- 必須: CaboCha実行プロセスの最大待ち時間 (秒) -->
 	<entry key="wait">100</entry>
 	
 	<!-- 必須: CaboCha実行時に使う入出力用一時ファイルのパス -->
@@ -18,5 +18,8 @@
 	<!-- インスタンス生成時や生成後に設定し直すことも可能 -->
 	<entry key="output-format">1</entry>
 	<entry key="named-entity">0</entry>
-	<!-- <entry key="output-file">dest/cabocha/parsed.txt</entry> -->
+	<entry key="input-file"></entry>
+	<entry key="output-file"></entry>
+	<entry key="sysdic-dir">/usr/local/lib/mecab/dic/mecab-ipadic-neologd</entry>
+	<entry key="usrdic-file"></entry>
 </properties>

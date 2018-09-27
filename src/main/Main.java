@@ -8,8 +8,6 @@ import cabocha.Cabocha;
 
 public class Main {
 	public static void main(String[] args) {
-		Cabocha cabocha = new Cabocha();
-
 		/*
 		List<String> texts = Arrays.asList(
 				"クジラは哺乳類である。", 
@@ -19,8 +17,12 @@ public class Main {
 				"クジラは尾びれが横向き。"
 				);
 		//*/
-		
+
 		Path p = Paths.get("../OntologyGenerator/resource/input/goo/text/gooText生物-動物名-All.txt");
+		Path p2 = Paths.get("");
+		
+		Cabocha cabocha = new Cabocha();
+
 		List<String> result = cabocha.parse(p);
 
 		System.out.println(result.size());

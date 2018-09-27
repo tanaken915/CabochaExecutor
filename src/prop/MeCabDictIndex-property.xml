@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>コメント</comment>
+	<!-- 必須: OSごとのmecab-dict-index起動コマンド -->
+	<entry key="command-windows"></entry>
+	<entry key="command-macos">/usr/local/libexec/mecab/mecab-dict-index</entry>
+
+</properties>
