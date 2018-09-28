@@ -9,7 +9,7 @@ public enum OutputFormatOption implements EnumerativeOption {
 	XML("3");				// XML形式で出力
 
 	private static final String PREFIX = "--output-format=";
-	//private static final String SHORTEN_PREFIX = "-f";
+	private static final String SHORTEN_PREFIX = "-f";
 	private static final String KEY = "output-format";
 	
 	private final String num_str;
@@ -29,12 +29,12 @@ public enum OutputFormatOption implements EnumerativeOption {
 
 	@Override
 	public String toOption() {
-		return PREFIX + num_str;
+		return SHORTEN_PREFIX + num_str;
 	}
 	
 	@Override
 	public String toString() {
-		return toOption();
+		return PREFIX + super.toString();
 	}
 	@Override
 	public String propertyKey() {

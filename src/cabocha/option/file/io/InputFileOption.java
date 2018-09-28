@@ -10,7 +10,7 @@ import cabocha.option.file.FileOption;
 public class InputFileOption extends FileOption {
 
 	private static final String PREFIX = "";
-	//private static final String SHORTEN_PREFIX = "";
+	private static final String SHORTEN_PREFIX = "";
 	private static final String KEY = "input-file";
 
 	public static Optional<InputFileOption> newInstance(Path file) {
@@ -22,19 +22,18 @@ public class InputFileOption extends FileOption {
 			return Optional.empty();
 		return Optional.of(new InputFileOption(file));
 	}	
-	private InputFileOption(Path file) {
+	public InputFileOption(Path file) {
 		super(file);
 	}
 
-	
 	@Override
 	public String toOption() {
-		return PREFIX + super.toString();
+		return SHORTEN_PREFIX + super.toString();
 	}
 
 	@Override
 	public String toString() {
-		return toOption();
+		return PREFIX + super.toString();
 	}
 	
 	@Override

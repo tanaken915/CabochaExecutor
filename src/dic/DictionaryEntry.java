@@ -41,7 +41,7 @@ public class DictionaryEntry {
 	public void setAsNoun() {
 		this.left_id 		= "";
 		this.right_id 		= "";
-		this.cost 			= "";
+		this.cost 			= "100";	// 適当
 		this.PoS			= "名詞";
 		this.subPoS1 		= "一般";
 		this.subPoS2 		= "*";

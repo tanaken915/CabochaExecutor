@@ -10,7 +10,8 @@ import cabocha.option.file.FileOption;
 public class SystemDicDirOption extends FileOption {
 
 	private static final String PREFIX = "--mecab-dicdir=";
-	//private static final String SHORTEN_PREFIX = "-d ";
+	// cabochaで使えることは保証されているが、mecab-dict-indexでは不明なので
+	private static final String SHORTEN_PREFIX = "-d";
 	private static final String KEY = "sysdic-dir";
 
 	public static Optional<SystemDicDirOption> newInstance(Path file) {
@@ -22,18 +23,18 @@ public class SystemDicDirOption extends FileOption {
 			return Optional.empty();
 		return Optional.of(new SystemDicDirOption(file));
 	}	
-	private SystemDicDirOption(Path file) {
+	public SystemDicDirOption(Path file) {
 		super(file);
 	}
 
 	@Override
 	public String toOption() {
-		return PREFIX + super.toString();
+		return SHORTEN_PREFIX + super.toString();
 	}
 	
 	@Override
 	public String toString() {
-		return toOption();
+		return PREFIX + super.toString();
 	}
 	@Override
 	public String propertyKey() {

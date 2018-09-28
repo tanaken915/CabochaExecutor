@@ -9,7 +9,7 @@ import cabocha.option.file.FileOption;
 public class OutputFileOption extends FileOption {
 
 	private static final String PREFIX = "--output=";
-	//private static final String SHORTEN_PREFIX = "-o";
+	private static final String SHORTEN_PREFIX = "-o";
 	private static final String KEY = "output-file";
 
 	public static Optional<OutputFileOption> newInstance(Path file) {
@@ -23,14 +23,15 @@ public class OutputFileOption extends FileOption {
 		super(file);
 	}
 
+
 	@Override
 	public String toOption() {
-		return PREFIX + super.toString();
+		return SHORTEN_PREFIX + super.toString();
 	}
 	
 	@Override
 	public String toString() {
-		return toOption();
+		return PREFIX + super.toString();
 	}
 	@Override
 	public String propertyKey() {

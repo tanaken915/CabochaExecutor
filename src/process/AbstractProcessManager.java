@@ -80,6 +80,19 @@ public abstract class AbstractProcessManager {
 		}
 		return Collections.emptyList();
 	}
+	/** 外部プロセスの標準出力をList<String>として読み込む */
+	protected List<String> readErrorFromProcess() {
+		try (InputStream is = process.getErrorStream();
+				InputStreamReader isr = new InputStreamReader(is, StandardCharsets.UTF_8);
+				BufferedReader br = new BufferedReader(isr);) {
+			return br.lines().collect(Collectors.toList());
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return Collections.emptyList();
+	}
 
 	/** 外部プロセスの標準出力をファイルに書き出す */
 	protected void writeOutput2File(Path path) {

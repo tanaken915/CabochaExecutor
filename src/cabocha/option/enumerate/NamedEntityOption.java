@@ -8,7 +8,7 @@ public enum NamedEntityOption implements EnumerativeOption {
 	USE_UNCONSTRAINT("2");	// 文節の整合性を保たずに固有表現解析を行う
 
 	private static final String PREFIX = "--ne=";
-	//private static final String SHORTEN_PREFIX = "-n";
+	private static final String SHORTEN_PREFIX = "-n";
 	private static final String KEY = "named-entity";
 	
 	private final String num_str;
@@ -28,12 +28,12 @@ public enum NamedEntityOption implements EnumerativeOption {
 
 	@Override
 	public String toOption() {
-		return PREFIX + num_str;
+		return SHORTEN_PREFIX + num_str;
 	}
 
 	@Override
 	public String toString() {
-		return toOption();
+		return PREFIX + super.toString();
 	}
 	@Override
 	public String propertyKey() {

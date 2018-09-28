@@ -6,4 +6,14 @@
 	<entry key="command-windows"></entry>
 	<entry key="command-macos">/usr/local/libexec/mecab/mecab-dict-index</entry>
 
+	<!-- 必須: CaboCha実行プロセスの最大待ち時間 (秒) -->
+	<entry key="wait">100</entry>
+	
+	<!-- 必須: CSVファイルの出力先 -->
+	<entry key="tmp_csv">tmp/mecab-dict-index/dicbase.csv</entry>
+	
+	<entry key="sysdic-dir">resource/sysdic/mecab-ipadic-neologd</entry>
+	<entry key="usrdic-file">resource/usrdic/user.dic</entry>
+	<entry key="csv-charset">utf8</entry>
+	<entry key="dic-charset">utf8</entry>
 </properties>
