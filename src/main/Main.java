@@ -19,7 +19,6 @@ public class Main {
 		//*/
 
 		Path p = Paths.get("../OntologyGenerator/resource/input/goo/text/gooText生物-動物名-All.txt");
-		Path p2 = Paths.get("");
 		
 		Cabocha cabocha = new Cabocha();
 

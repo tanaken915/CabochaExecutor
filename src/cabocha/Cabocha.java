@@ -50,7 +50,7 @@ public class Cabocha extends AbstractProcessManager implements ParserInterface {
 	
 	static {
 		Properties prop = new Properties();
-		try (InputStream is = Cabocha.class.getClassLoader().getResourceAsStream("prop/property.xml")) {
+		try (InputStream is = Cabocha.class.getClassLoader().getResourceAsStream("prop/CaboCha-property.xml")) {
 			prop.loadFromXML(is);
 		} catch (IOException e) {
 			e.printStackTrace();

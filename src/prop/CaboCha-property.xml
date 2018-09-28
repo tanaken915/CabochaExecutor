@@ -20,6 +20,6 @@
 	<entry key="named-entity">0</entry>
 	<entry key="input-file"></entry>
 	<entry key="output-file"></entry>
-	<entry key="sysdic-dir">/usr/local/lib/mecab/dic/mecab-ipadic-neologd</entry>
-	<entry key="usrdic-file"></entry>
+	<entry key="sysdic-dir">resource/sysdic/mecab-ipadic-neologd</entry>
+	<entry key="usrdic-file">resource/usrdic/user.dic</entry>
 </properties>
