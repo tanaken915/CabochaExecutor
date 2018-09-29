@@ -13,7 +13,8 @@
 	<entry key="tmp_csv">tmp/mecab-dict-index/dicbase.csv</entry>
 	
 	<entry key="sysdic-dir">resource/sysdic/mecab-ipadic-neologd</entry>
-	<entry key="usrdic-file">resource/usrdic/user.dic</entry>
+	<entry key="usrdic-file">dest/usrdic/user.dic</entry>
 	<entry key="csv-charset">utf8</entry>
 	<entry key="dic-charset">utf8</entry>
+	<entry key="model-file">resource/model/mecab-ipadic-2.7.0-20070801.utf8.model</entry>
 </properties>

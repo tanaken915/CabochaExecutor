@@ -9,6 +9,8 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -22,6 +24,7 @@ import cabocha.option.file.dic.SystemDicDirOption;
 import cabocha.option.file.dic.UserDicFileOption;
 import cabocha.option.file.io.InputFileOption;
 import cabocha.option.file.io.OutputFileOption;
+import cabocha.option.file.model.ModelFileOption;
 import process.AbstractProcessManager;
 import process.WaitTime;
 import util.PlatformUtil;
@@ -46,6 +49,7 @@ public class DictionaryIndexer extends AbstractProcessManager {
 	private static final UserDicFileOption USRDIC_FILE_OPTION;
 	private static final CSVCharsetOption CSV_CHARSET_OPTION;
 	private static final DicCharsetOption DIC_CHARSET_OPTION;
+	private static final Optional<ModelFileOption> MODEL_FILE_OPTION;
 	
 	static {
 		Properties prop = new Properties();
@@ -63,6 +67,7 @@ public class DictionaryIndexer extends AbstractProcessManager {
 		String val4usrdic 	= prop.getProperty("usrdic-file");
 		String val4csvchar 	= prop.getProperty("csv-charset");
 		String val4dicchar 	= prop.getProperty("dic-charset");
+		String val4model 	= prop.getProperty("model-file");
 		
 		COMMAND 				= Arrays.asList(val4command.split(" "));
 		WAIT 					= new WaitTime(Long.valueOf(val4wait), TimeUnit.SECONDS);
@@ -71,6 +76,7 @@ public class DictionaryIndexer extends AbstractProcessManager {
 		USRDIC_FILE_OPTION 		= UserDicFileOption.newInstance(Paths.get(val4usrdic)).get();
 		CSV_CHARSET_OPTION 		= CSVCharsetOption.newInstance(val4csvchar).get();
 		DIC_CHARSET_OPTION 		= DicCharsetOption.newInstance(val4dicchar).get();
+		MODEL_FILE_OPTION 		= ModelFileOption.newInstance(Paths.get(val4model));
 	}
 	
 	private SystemDicDirOption sysdic_dir_option;
@@ -78,6 +84,7 @@ public class DictionaryIndexer extends AbstractProcessManager {
 	private CSVCharsetOption csv_charset_option;
 	private DicCharsetOption dic_charset_option;
 	private InputFileOption input_file_option;
+	private Optional<ModelFileOption> model_file_option;
 	
 	/* ================================================== */
 	/* ================== Constructor =================== */
@@ -87,13 +94,17 @@ public class DictionaryIndexer extends AbstractProcessManager {
 		this.usrdic_file_option = USRDIC_FILE_OPTION;
 		this.csv_charset_option = CSV_CHARSET_OPTION;
 		this.dic_charset_option = DIC_CHARSET_OPTION;
+		this.model_file_option 	= MODEL_FILE_OPTION;
 	}
 	
 	/* ================================================== */
 	/* ================= Member Method ================== */
 	/* ================================================== */
 	private Stream<CommandOption> OptionsStream() {
-		return Stream.of(sysdic_dir_option, usrdic_file_option, csv_charset_option, dic_charset_option, input_file_option);
+		return Stream.of(sysdic_dir_option, usrdic_file_option, 
+				csv_charset_option, dic_charset_option, 
+				input_file_option, model_file_option.orElse(null))
+				.filter(Objects::nonNull);
 	}
 	private List<String> command() {
 		Stream<String> commandStream = COMMAND.stream();
@@ -116,6 +127,8 @@ public class DictionaryIndexer extends AbstractProcessManager {
 		List<String> csv = nouns.stream()
 				.map(DictionaryEntry::new)
 				.peek(DictionaryEntry::setAsNoun)
+				// コストは自動的に100に設定されるが-mオプションを使用する場合のみ空にする
+				.peek(de -> model_file_option.ifPresent(o -> de.setCost("")))
 				.map(DictionaryEntry::toCSV)
 				.collect(Collectors.toList());
 		try {

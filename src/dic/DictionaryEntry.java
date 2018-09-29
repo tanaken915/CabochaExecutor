@@ -62,4 +62,49 @@ public class DictionaryEntry {
 	public String toCSV() {
 		return String.join(",", toList());
 	}
+
+	
+	/* ================================================== */
+	/* ===================== Setter ===================== */
+	/* ================================================== */
+	public void setSurface(String surface) {
+		this.surface = surface;
+	}
+	public void setLeft_id(String left_id) {
+		this.left_id = left_id;
+	}
+	public void setRight_id(String right_id) {
+		this.right_id = right_id;
+	}
+	public void setCost(String cost) {
+		this.cost = cost;
+	}
+	public void setPoS(String poS) {
+		PoS = poS;
+	}
+	public void setSubPoS1(String subPoS1) {
+		this.subPoS1 = subPoS1;
+	}
+	public void setSubPoS2(String subPoS2) {
+		this.subPoS2 = subPoS2;
+	}
+	public void setSubPoS3(String subPoS3) {
+		this.subPoS3 = subPoS3;
+	}
+	public void setConjugation(String conjugation) {
+		this.conjugation = conjugation;
+	}
+	public void setInflection(String inflection) {
+		this.inflection = inflection;
+	}
+	public void setInfinitive(String infinitive) {
+		this.infinitive = infinitive;
+	}
+	public void setYomi(String yomi) {
+		this.yomi = yomi;
+	}
+	public void setPronounciation(String pronounciation) {
+		this.pronounciation = pronounciation;
+	}
+
 }
