@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public class CSVCharsetOption extends CharsetOption {
 
-	//private static final String PREFIX = "";
+	private static final String PREFIX = "-f";
 	private static final String SHORTEN_PREFIX = "-f";
 	private static final String KEY = "csv-charset";
 

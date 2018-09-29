@@ -17,9 +17,9 @@
 	<!-- 任意: CaboChaのオプション -->
 	<!-- インスタンス生成時や生成後に設定し直すことも可能 -->
 	<entry key="output-format">1</entry>
-	<entry key="named-entity">0</entry>
-	<entry key="input-file"></entry>
+	<entry key="named-entity">1</entry>
+	<entry key="input-file"></entry> <!-- メソッドの引数として渡すので通常最初から設定はしない -->
 	<entry key="output-file"></entry>
 	<entry key="sysdic-dir">resource/sysdic/mecab-ipadic-neologd</entry>
-	<entry key="usrdic-file">resource/usrdic/user.dic</entry>
+	<entry key="usrdic-file"></entry>
 </properties>

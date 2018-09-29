@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public class DicCharsetOption extends CharsetOption {
 
-	// private static final String PREFIX = "";
+	private static final String PREFIX = "-t";
 	private static final String SHORTEN_PREFIX = "-t";
 	private static final String KEY = "dic-charset";
 
@@ -28,7 +28,7 @@ public class DicCharsetOption extends CharsetOption {
 
 	@Override
 	public String toString() {
-		return SHORTEN_PREFIX + super.toString();
+		return PREFIX + super.toString();
 	}
 
 	@Override

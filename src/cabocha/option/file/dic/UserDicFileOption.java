@@ -8,7 +8,7 @@ import cabocha.option.file.FileOption;
 
 public class UserDicFileOption extends FileOption {
 
-	//private static final String PREFIX = "--undifined=";
+	private static final String PREFIX = "-u";
 	private static final String SHORTEN_PREFIX = "-u";
 	private static final String KEY = "usrdic-file";
 
@@ -30,7 +30,7 @@ public class UserDicFileOption extends FileOption {
 	
 	@Override
 	public String toString() {
-		return SHORTEN_PREFIX + super.toString();
+		return PREFIX + super.toString();
 	}
 	@Override
 	public String propertyKey() {

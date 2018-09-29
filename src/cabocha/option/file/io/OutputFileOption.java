@@ -19,7 +19,7 @@ public class OutputFileOption extends FileOption {
 			return Optional.empty();
 		return Optional.of(new OutputFileOption(file));
 	}	
-	private OutputFileOption(Path file) {
+	public OutputFileOption(Path file) {
 		super(file);
 	}
 
