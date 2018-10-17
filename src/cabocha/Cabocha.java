@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import cabocha.option.CabochaOptionManager;
 import cabocha.option.CommandOption;
 import cabocha.option.file.io.InputFileOption;
 import cabocha.option.file.io.OutputFileOption;

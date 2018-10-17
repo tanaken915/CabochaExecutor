@@ -1,4 +1,4 @@
-package cabocha;
+package cabocha.option;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -10,7 +10,6 @@ import java.util.Optional;
 import java.util.Properties;
 import java.util.stream.Stream;
 
-import cabocha.option.CommandOption;
 import cabocha.option.enumerate.NamedEntityOption;
 import cabocha.option.enumerate.OutputFormatOption;
 import cabocha.option.file.dic.SystemDicDirOption;

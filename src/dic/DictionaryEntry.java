@@ -3,108 +3,70 @@ package dic;
 import java.util.Arrays;
 import java.util.List;
 
-public class DictionaryEntry {
+public class DictionaryEntry extends CabochaTags {
+	
 	/** 表層形 */
-	private String surface;
+	private final String surface;
 	/** 左文脈ID */
-	private String left_id;
+	private final String left_id;
 	/** 右文脈ID */
-	private String right_id;
+	private final String right_id;
 	/** コスト */
 	private String cost;
-	/** 品詞 */
-	private String PoS;
-	/** 品詞細分類1 */
-	private String subPoS1;
-	/** 品詞細分類2 */
-	private String subPoS2;
-	/** 品詞細分類3 */
-	private String subPoS3;
-	/** 活用型 */
-	private String conjugation;
-	/** 活用形 */
-	private String inflection;
-	/** 原形 */
-	private String infinitive;
-	/** 読み */
-	private String yomi;
-	/** 発音 */
-	private String pronounciation;
+
 	
 	/* ================================================== */
 	/* ================== Constructor =================== */
 	/* ================================================== */
-	public DictionaryEntry(String surface) {
-		this.surface 	= surface;
+	protected DictionaryEntry(
+			String surface, String left_id, String right_id, String cost, 
+			String mainPoS, String subPoS1, String subPoS2, String subPoS3,
+			String conjugation, String inflection, String infinitive, String yomi, String pronunciation) {
+		super(mainPoS, subPoS1, subPoS2, subPoS3, conjugation, inflection, infinitive, yomi, pronunciation);
+		this.surface		= surface;
+		this.left_id		= left_id;
+		this.right_id		= right_id;
+		this.cost			= cost;
 	}
 	
-	public void setAsNoun() {
-		this.left_id 		= "";
-		this.right_id 		= "";
-		this.cost 			= "100";	// 適当
-		this.PoS			= "名詞";
-		this.subPoS1 		= "一般";
-		this.subPoS2 		= "*";
-		this.subPoS3 		= "*";
-		this.conjugation 	= "*";
-		this.inflection 	= "*";
-		this.infinitive 	= surface;
-		this.yomi 			= "*";
-		this.pronounciation = "*";
+	/* ===== Factory Method ===== */
+	public static DictionaryEntry getInstance(
+			String surface, String left_id, String right_id, String cost, 
+			String mainPoS, String subPoS1, String subPoS2, String subPoS3,
+			String conjugation, String inflection, String infinitive, String yomi, String pronunciation) {
+		return DicEntryFactory.intern(surface, left_id, right_id, cost, mainPoS, subPoS1, subPoS2, subPoS3, conjugation, inflection, infinitive, yomi, pronunciation);
 	}
-	
-	public List<String> toList() {
-		return Arrays.asList(surface, left_id, right_id, cost,
-				PoS, subPoS1, subPoS2, subPoS3, 
-				conjugation, inflection, infinitive, yomi, pronounciation);
-	}
-	
-	public String toCSV() {
-		return String.join(",", toList());
+	public static DictionaryEntry newSimpleNounizeInstance(String surface) {
+		return new DictionaryEntry(surface, "", "", "100", "名詞", "一般", "*", "*", "*", "*", surface, "*", "*");
 	}
 
 	
 	/* ================================================== */
-	/* ===================== Setter ===================== */
+	/* ================== Member Method ================= */
+	/* ================================================== */	
+	public String toCSV() {
+		return String.join(",", toList());
+	}
+
 	/* ================================================== */
-	public void setSurface(String surface) {
-		this.surface = surface;
+	/* ================ Interface Method ================ */
+	/* ================================================== */
+	@Override
+	public Object[] initArgs() {
+		return new Object[] {surface, left_id, right_id, cost, mainPoS, subPoS1, subPoS2, subPoS3, conjugation, inflection, infinitive, yomi, pronunciation};
 	}
-	public void setLeft_id(String left_id) {
-		this.left_id = left_id;
+	@Override
+	public List<String> toList() {
+		return Arrays.asList(surface, left_id, right_id, cost,
+				mainPoS, subPoS1, subPoS2, subPoS3, 
+				conjugation, inflection, infinitive, yomi, pronunciation);
 	}
-	public void setRight_id(String right_id) {
-		this.right_id = right_id;
-	}
+
+	/* ================================================== */
+	/* ===================== Setter ===================== */
+	/* ================================================== */	
 	public void setCost(String cost) {
 		this.cost = cost;
-	}
-	public void setPoS(String poS) {
-		PoS = poS;
-	}
-	public void setSubPoS1(String subPoS1) {
-		this.subPoS1 = subPoS1;
-	}
-	public void setSubPoS2(String subPoS2) {
-		this.subPoS2 = subPoS2;
-	}
-	public void setSubPoS3(String subPoS3) {
-		this.subPoS3 = subPoS3;
-	}
-	public void setConjugation(String conjugation) {
-		this.conjugation = conjugation;
-	}
-	public void setInflection(String inflection) {
-		this.inflection = inflection;
-	}
-	public void setInfinitive(String infinitive) {
-		this.infinitive = infinitive;
-	}
-	public void setYomi(String yomi) {
-		this.yomi = yomi;
-	}
-	public void setPronounciation(String pronounciation) {
-		this.pronounciation = pronounciation;
 	}
 
 }

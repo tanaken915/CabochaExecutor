@@ -125,8 +125,7 @@ public class DictionaryIndexer extends AbstractProcessManager {
 	
 	public Path nouns2csv(Collection<String> nouns) {
 		List<String> csv = nouns.stream()
-				.map(DictionaryEntry::new)
-				.peek(DictionaryEntry::setAsNoun)
+				.map(DictionaryEntry::newSimpleNounizeInstance)
 				// コストは自動的に100に設定されるが-mオプションを使用する場合のみ空にする
 				.peek(de -> model_file_option.ifPresent(o -> de.setCost("")))
 				.map(DictionaryEntry::toCSV)
@@ -138,9 +137,5 @@ public class DictionaryIndexer extends AbstractProcessManager {
 		}
 		return OUTPUT_CSV.getPath();
 	}
-	
-	public DictionaryEntry makesEntry(String noun) {
-		DictionaryEntry de = new DictionaryEntry(noun);
-		return de;
-	}
+
 }

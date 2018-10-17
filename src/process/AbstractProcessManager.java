@@ -80,7 +80,7 @@ public abstract class AbstractProcessManager {
 		}
 		return Collections.emptyList();
 	}
-	/** 外部プロセスの標準出力をList<String>として読み込む */
+	/** 外部プロセスのエラー出力をList<String>として読み込む */
 	protected List<String> readErrorFromProcess() {
 		try (InputStream is = process.getErrorStream();
 				InputStreamReader isr = new InputStreamReader(is, StandardCharsets.UTF_8);
