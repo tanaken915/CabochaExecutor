@@ -3,6 +3,8 @@ package dic;
 import java.util.Arrays;
 import java.util.List;
 
+import pos.CabochaTags;
+
 public class DictionaryEntry extends CabochaTags {
 	
 	/** 表層形 */
@@ -29,7 +31,7 @@ public class DictionaryEntry extends CabochaTags {
 		this.cost			= cost;
 	}
 	
-	/* ===== Factory Method ===== */
+	/* ================= Factory Method ================= */
 	public static DictionaryEntry getInstance(
 			String surface, String left_id, String right_id, String cost, 
 			String mainPoS, String subPoS1, String subPoS2, String subPoS3,

@@ -26,6 +26,5 @@ public class Main {
 		List<String> result = cabocha.parse(p);
 
 		System.out.println(result.size());
-		//result.forEach(System.out::println);
 	}
 }
