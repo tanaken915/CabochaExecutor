@@ -6,7 +6,6 @@ import java.util.List;
 import pos.CabochaTags;
 
 public class DictionaryEntry extends CabochaTags {
-	
 	/** 表層形 */
 	private final String surface;
 	/** 左文脈ID */
@@ -16,7 +15,6 @@ public class DictionaryEntry extends CabochaTags {
 	/** コスト */
 	private String cost;
 
-	
 	/* ================================================== */
 	/* ================== Constructor =================== */
 	/* ================================================== */
@@ -31,13 +29,6 @@ public class DictionaryEntry extends CabochaTags {
 		this.cost			= cost;
 	}
 	
-	/* ================= Factory Method ================= */
-	public static DictionaryEntry getInstance(
-			String surface, String left_id, String right_id, String cost, 
-			String mainPoS, String subPoS1, String subPoS2, String subPoS3,
-			String conjugation, String inflection, String infinitive, String yomi, String pronunciation) {
-		return DicEntryFactory.intern(surface, left_id, right_id, cost, mainPoS, subPoS1, subPoS2, subPoS3, conjugation, inflection, infinitive, yomi, pronunciation);
-	}
 	public static DictionaryEntry newSimpleNounizeInstance(String surface) {
 		return new DictionaryEntry(surface, "", "", "100", "名詞", "一般", "*", "*", "*", "*", surface, "*", "*");
 	}
