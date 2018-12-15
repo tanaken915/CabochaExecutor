@@ -1,6 +1,7 @@
-package pos;
+package language.pos;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Objects;
@@ -8,7 +9,7 @@ import java.util.Objects;
 import dic.Immutable;
 
 public class CabochaTags 
-implements Comparable<CabochaTags>, CabochaPoSInterface, Immutable {
+implements Comparable<CabochaTags>, CabochaPoSInterface, Immutable, Concatable<CabochaTags> {
 	public static final CabochaTags EMPTY_TAGS = 
 			new CabochaTags("", "", "", "", "", "", "", "", "");
 
@@ -56,37 +57,43 @@ implements Comparable<CabochaTags>, CabochaPoSInterface, Immutable {
 
 	/**
 	 * 後方優先で結合する。
-	 * @param tag1
-	 * @param tag2
+	 * @param other
 	 * @return 結合したCaboChaタグ
 	 */
-	public static CabochaTags concat(CabochaTags tag1, CabochaTags tag2) {
-		String mainPoS			= tag2.mainPoS;
-		String subPoS1			= tag2.subPoS1;
-		String subPoS2			= tag2.subPoS2;
-		String subPoS3			= tag2.subPoS3;
-		String conjugation	 	= tag2.conjugation;
-		String inflection		= tag2.inflection;
-		String infinitive 		= tag1.infinitive + tag2.infinitive;
-		String yomi				= tag1.yomi + tag2.yomi;
-		String pronunciation	= tag1.pronunciation + tag2.pronunciation;
-		return new CabochaTags(mainPoS, subPoS1, subPoS2, subPoS3, conjugation, inflection, infinitive, yomi, pronunciation);
+	@Override
+	public CabochaTags concat(CabochaTags other) {
+		String mainPoS_c		= other.mainPoS;
+		String subPoS1_c		= other.subPoS1;
+		String subPoS2_c		= other.subPoS2;
+		String subPoS3_c		= other.subPoS3;
+		String conjugation_c 	= other.conjugation;
+		String inflection_c		= other.inflection;
+		String infinitive_c		= infinitive + other.infinitive;
+		String yomi_c			= yomi + other.yomi;
+		String pronunciation_c	= pronunciation + other.pronunciation;
+		return new CabochaTags(mainPoS_c, subPoS1_c, subPoS2_c, subPoS3_c, conjugation_c, inflection_c, infinitive_c, yomi_c, pronunciation_c);
 	}
 
 	/* ================================================== */
-	/* ==========        Member  Method        ========== */
+	/* ================== Member Method ================= */
 	/* ================================================== */
 	public List<String> toList() {
 		return Arrays.asList(mainPoS, subPoS1, subPoS2, subPoS3,
 				conjugation, inflection, infinitive, yomi, pronunciation);
 	}
 
-	public boolean contains(Object o) {
-		return toList().contains(o);
+	@Override
+	public boolean contains(String pos) {
+		return toList().contains(pos);
 	}
 
+	@Override
+	public boolean containsAll(Collection<String> poss) {
+		return toList().containsAll(poss);
+	}
+	
 	/* ================================================== */
-	/* ==========       Interface Method       ========== */
+	/* ================ Interface Method ================ */
 	/* ================================================== */
 	@Override
 	public int compareTo(CabochaTags o) {
@@ -140,9 +147,8 @@ implements Comparable<CabochaTags>, CabochaPoSInterface, Immutable {
 	}
 
 
-
 	/* ================================================== */
-	/* ==========        Object  Method        ========== */
+	/* ================== Object Method ================= */
 	/* ================================================== */
 	@Override
 	public int hashCode() {

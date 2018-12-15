@@ -1,7 +1,8 @@
-package pos;
+package language.pos;
+
+import java.util.Collection;
 
 public interface CabochaPoSInterface {
-
 	/** 品詞 */
 	String mainPoS();
 	/** 品詞細分類1 */
@@ -20,5 +21,7 @@ public interface CabochaPoSInterface {
 	String yomi();
 	/** 発音 */
 	String pronunciation();
-
+	
+	boolean contains(String pos);
+	boolean containsAll(Collection<String> poss);
 }

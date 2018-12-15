@@ -3,7 +3,7 @@ package dic;
 import java.util.Arrays;
 import java.util.List;
 
-import pos.CabochaTags;
+import language.pos.CabochaTags;
 
 public class DictionaryEntry extends CabochaTags {
 	/** 表層形 */

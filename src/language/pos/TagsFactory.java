@@ -1,4 +1,4 @@
-package pos;
+package language.pos;
 
 import java.util.function.Supplier;
 
@@ -15,7 +15,8 @@ public final class TagsFactory extends Factory<CabochaTags> {
 		Supplier<CabochaTags> construcrtion = 
 				() -> new CabochaTags(mainPoS, subPoS1, subPoS2, subPoS3, 
 						conjugation, inflection, infinitive, yomi, pronunciation);
-		return TagsFactory.getInstance().intern(mainPoS, construcrtion, 
+		return TagsFactory.getInstance().intern(
+				mainPoS, construcrtion, 
 				mainPoS, subPoS1, subPoS2, subPoS3, 
 				conjugation, inflection, infinitive, yomi, pronunciation);
 	}

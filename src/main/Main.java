@@ -2,14 +2,13 @@ package main;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 
 import cabocha.Cabocha;
 
 public class Main {
 	public static void main(String[] args) {
-		///*
+		/*
 		List<String> texts = Arrays.asList(
 				"クジラは哺乳類である。", 
 				"クジラは海に住む。" ,
