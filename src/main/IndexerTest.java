@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import dic.DictionaryIndexer;
 
@@ -16,8 +17,8 @@ public class IndexerTest {
 	public static void main(String[] args) {
 		Path nounFile = Paths.get("resource/words/nouns.txt");
 		List<String> nouns = Collections.emptyList();
-		try {
-			nouns = Files.lines(nounFile, StandardCharsets.UTF_8).collect(Collectors.toList());
+		try (Stream<String> lines = Files.lines(nounFile, StandardCharsets.UTF_8)) {
+			nouns = lines.collect(Collectors.toList());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

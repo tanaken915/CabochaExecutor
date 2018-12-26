@@ -6,10 +6,10 @@ import util.Factory;
 
 public final class DicEntryFactory extends Factory<DictionaryEntry> {
 	private static final DicEntryFactory FACTORY = new DicEntryFactory();
-	public static DicEntryFactory getInstance() {
-		return FACTORY;
-	}
+	private DicEntryFactory() {}
+	public static DicEntryFactory get() { return FACTORY; }
 
+	
 	public static DictionaryEntry getDictionaryEntry(
 			String surface, String left_id, String right_id, String cost, 
 			String mainPoS, String subPoS1, String subPoS2, String subPoS3,
@@ -19,7 +19,7 @@ public final class DicEntryFactory extends Factory<DictionaryEntry> {
 						mainPoS, subPoS1, subPoS2, subPoS3, 
 						conjugation, inflection, infinitive, yomi, pronunciation);
 
-		return DicEntryFactory.getInstance().intern(mainPoS, construcrtion, 
+		return DicEntryFactory.get().intern(mainPoS, construcrtion, 
 				surface, left_id, right_id, cost, 
 				mainPoS, subPoS1, subPoS2, subPoS3, 
 				conjugation, inflection, infinitive, yomi, pronunciation);
