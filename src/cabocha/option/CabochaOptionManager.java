@@ -86,24 +86,20 @@ public class CabochaOptionManager {
 	public void setOutputFormatOption(OutputFormatOption outputFormatOption) {
 		this.outputFormatOption = Optional.of(outputFormatOption);
 	}
-
 	public void setNamedEntityOption(NamedEntityOption namedEntityOption) {
 		this.namedEntityOption = Optional.of(namedEntityOption);
 	}
-
 	public void setInputFileOption(InputFileOption inputFileOption) {
 		this.inputFileOption = Optional.of(inputFileOption);
 	}
-
 	public void setOutputFileOption(OutputFileOption outputFileOption) {
 		this.outputFileOption = Optional.of(outputFileOption);
 	}
-
 	public void setSysdicDirOption(SystemDicDirOption sysdicDirOption) {
 		this.sysdicDirOption = Optional.of(sysdicDirOption);
 	}
-
 	public void setUsrdicFileOption(UserDicFileOption usrdicFileOption) {
 		this.usrdicFileOption = Optional.of(usrdicFileOption);
 	}
+	
 }
