@@ -8,8 +8,9 @@ import java.util.Objects;
 
 import dic.Immutable;
 
-public class CabochaTags 
-implements Comparable<CabochaTags>, CabochaPoSInterface, Immutable, Concatable<CabochaTags> {
+public class CabochaTags implements Comparable<CabochaTags>, 
+		CabochaPoSInterface, Immutable, Concatable<CabochaTags> {
+	
 	public static final CabochaTags EMPTY_TAGS = 
 			new CabochaTags("", "", "", "", "", "", "", "", "");
 
